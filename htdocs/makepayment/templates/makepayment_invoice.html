@@ -1,0 +1,106 @@
+<style type="text/css">
+<!--
+.style1 {
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.style2 {
+	font-size: 12px;
+	font-weight: bold;
+}
+-->
+</style>
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="22"><img src="<{$xoops_url}>/images/borders/thk-topcrn-left.png" width="22" height="24"></td>
+    <td colspan="2" align="left" valign="bottom" nowrap background="<{$xoops_url}>/images/borders/thk-middle-top.png">&nbsp;</td>
+    <td width="25"><img src="<{$xoops_url}>/images/borders/thk-topcrn-right.png" width="22" height="24"></td>
+  </tr>
+  <tr>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-left.png">&nbsp;</td>
+    <td colspan="2"><span class="style1">Make Payment to <{$payment_to}></span></td>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-right.png">&nbsp;</td>
+  </tr>
+  <tr>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-left.png">&nbsp;</td>
+    <td colspan="2">&nbsp;</td>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-right.png">&nbsp;</td>
+  </tr>
+  <tr>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-left.png">&nbsp;</td>
+    <td colspan="2">Items:</td>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-right.png">&nbsp;</td>
+  </tr>
+  <tr>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-left.png">&nbsp;</td>
+    <td colspan="2"><table width="100%"  border="1" cellspacing="0" cellpadding="0">
+	  <tr align="right" valign="bottom" bgcolor="#333333" class="<{cycle values="odd,even"}>
+	  <{foreach from=$purchase_array item=invoiceitems}>
+	  <tr class="<{cycle values="odd,even"}>">
+        <td><div align="left"><{$invoiceitems.name}></div></td>
+        <td nowrap width="16%"><div align="right"><{$invoiceitems.quanity}></div></td>
+		<td nowrap width="3%"><div align="center">x</div></td>
+        <td nowrap width="16%"><div align="right"><{$invoiceitems.unitprice}></div></td>
+        <td nowrap width="16%"><div align="right"><{$invoiceitems.overall}></div></td>
+        <td nowrap width="9%"><div align="right"><{$invoiceitems.currency}></div></td>
+      </tr>
+	 <{/foreach}>
+    </table></td>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-right.png">&nbsp;</td>
+  </tr>
+  <tr>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-left.png">&nbsp;</td>
+    <td colspan="2">&nbsp;</td>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-right.png">&nbsp;</td>
+  </tr>
+  <tr>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-left.png">&nbsp;</td>
+    <td colspan="2"><div align="right" class="style2">Invoice Total: <{$payment_total}> <{$payment_currency}></div></td>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-right.png">&nbsp;</td>
+  </tr>
+  <tr>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-left.png">&nbsp;</td>
+    <td colspan="2">&nbsp;</td>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-right.png">&nbsp;</td>
+  </tr>
+  <tr>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-left.png">&nbsp;</td>
+    <td colspan="2"><{include file="db:makepayment_disclaimer.html"}></td>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-right.png">&nbsp;</td>
+  </tr>
+  <tr>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-left.png">&nbsp;</td>
+    <td colspan="2">&nbsp;</td>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-right.png">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="22" background="<{$xoops_url}>/images/borders/thk-middle-left.png">&nbsp;</td>
+    <td><{if $button_cancel == 1}><form name="cancel" method="post" action="<{$cancel_url}>">
+	      <input name="action" type="submit" id="action" value="<{$button_cancel_text}>">
+		  <input name="op" type="hidden" id="op" value="cancel">
+		  <input name="ticket" type="hidden" id="ticket" value="<{$ticket_crc}>">
+    </form><{/if}></td>
+	<td align="right"><div align="right"><{if $button_confirm}><form name="confirm" method="post" action="<{$confirm_url}>">
+      <input name="action" type="submit" id="action" value="<{$button_confirm_text}>">
+	  <input name="op" type="hidden" id="op" value="<{$confirm_action}>">
+	  <input name="ticket" type="hidden" id="ticket" value="<{$ticket_crc}>">
+    </form><{/if}><{if $button_confirm_2}><form name="confirm" method="post" action="<{$confirm_url_2}>">
+      <input name="action" type="submit" id="action" value="<{$button_confirm_2_text}>">
+	  <input name="op" type="hidden" id="op" value="<{$confirm_action_2}>">
+	  <input name="ticket" type="hidden" id="ticket" value="<{$ticket_crc}>">
+    </form><{/if}></div></td>
+	<td background="<{$xoops_url}>/images/borders/thk-middle-right.png">&nbsp;</td>
+  </tr>
+  <tr>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-left.png">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td align="right"><{if $xoops_user==0}><a href="javascript:openWithSelfMain('http://www.paythem.biz/extras/login.php','Login',250,350);">Login To Pay Them</a><{/if}> </td>
+    <td background="<{$xoops_url}>/images/borders/thk-middle-right.png">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="22"><img src="<{$xoops_url}>/images/borders/thk-bttmcrn-left.png" width="22" height="24"></td>
+    <td colspan="2" background="<{$xoops_url}>/images/borders/thk-middle-bottom.png">&nbsp;</td>
+    <td><img src="<{$xoops_url}>/images/borders/thk-bttmcrn-right.png" width="22" height="24"></td>
+  </tr>
+</table>

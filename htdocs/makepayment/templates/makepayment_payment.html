@@ -1,0 +1,26 @@
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+  <{if $reporton==1}>
+  <tr>
+    <th width="31%"><div align="left">Invoice CRC</div></th>
+    <th width="22%"><div align="center">Created</div></th>
+    <th width="25%"><div align="center">Payment To </div></th>
+    <th width="22%"><div align="center">Total Value (*)</div></th>
+  </tr>
+  <{foreach from=$invoice_array item=invitem}>
+  <tr>
+    <td><a href="<{$xoops_url}>/modules/makepayment/?op=goto_displayinvoice&ticket=<{$invitem.crc}>"><{$invitem.crc}></a></td>
+    <td><div align="center"><{$invitem.created}></div></td>
+    <td><div align="center"><a href="<{$xoops_url}>/userinfo.php?uid=<{$invitem.uid}>"><{$invitem.uname}></a></div></td>
+    <td><div align="center"><{$invitem.ttl_value}> <{$invitem.currency}></div></td>
+  </tr>
+  <{/foreach}>
+  <{/if}>
+  <{if $reporton==0}>
+  <tr>
+    <th colspan="4">There are no invoice(s) to report on under this category! </th>
+  </tr>
+  <{/if}>
+</table>
+
+<p align="right">Page: <{$page_nav}></p>
+<p align="left">(*) Subject to changes in market financial value of the australian dollar vs other currencies. </p>
